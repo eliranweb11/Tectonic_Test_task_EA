@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Tectonic</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- == CSS == -->
+    <link href="css/main.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.js"></script>
+    <script>
+        $.getJSON("https://swapi.co/api/people/", function (data) {
+            var template = $("#users_template").html();
+            var html = Mustache.render(template, data);
+            $("#wrp-info-users-container").html(html);
+        });
+    </script>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Information User</h2>
+        <div class="users">
+            <div id="wrp-info-users-container"></div>
+        </div>
+    </div>
+    <script id="users_template" type="text/template">
+        {{#results}}
+        <div class="info-user">
+            <div><b>Name</b>: {{name}}</div>
+            <div><b>Height</b>: {{height}}</div>
+            <div><b>mass</b>: {{mass}}</div>
+            <div><b>Hair color</b>: {{hair_color}}</div>
+            <div><b>Skin color</b>: {{skin_color}}</div>
+            
+            <div><b>Eye color</b>: {{eye_color}}</div>
+            <div><b>Birthyear</b>: {{birth_year}}</div>
+            <div><b>Gender</b>: {{gender}}</div>
+        </div>
+        {{/results}}
+    </script>
+
+</body>
+</html>
